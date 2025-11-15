@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://yr81wn0m3hjj"]
+
+[ext_resource type="Script" uid="uid://d0fgfmx1skwoc" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://b4pmylxugfp6m" path="res://assets/dude/fall.png" id="2_oo0fn"]
+
+[node name="HUD" type="Node2D"]
+script = ExtResource("1_ahhtf")
+health_texture = ExtResource("2_oo0fn")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 128.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

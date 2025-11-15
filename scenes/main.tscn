@@ -1,10 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://udiba07oudwd"]
+[gd_scene load_steps=25 format=3 uid="uid://udiba07oudwd"]
 
-[ext_resource type="Texture2D" uid="uid://cyu2rsv1n55qd" path="res://assets/background.png" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://dgub4kgnsdtdv" path="res://assets/background.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://2n36yq30hjxd" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bl8tpj22odgfm" path="res://scenes/physics_dude.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dtjju48iuynx8" path="res://scenes/box.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dfi8wukf01ayl" path="res://scenes/killable_blob.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://x4r0kb6gomgl" path="res://scenes/rock.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c2r7sux7hvstb" path="res://scenes/crate.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dk7nhm24x4of8" path="res://scenes/fan.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://caq15ghpxeh73" path="res://scenes/button.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://os6lsf2sx2j0" path="res://scenes/trap.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://yr81wn0m3hjj" path="res://scenes/hud.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dig5nmpr6foy5" path="res://scenes/menu.tscn" id="12_eb6dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(256, 28.833336)
@@ -51,7 +58,13 @@ scale = Vector2(2.25, 2.53125)
 texture = ExtResource("1_o5qli")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(203, 366)
+z_index = 1
+position = Vector2(693, 497)
+
+[node name="Menu" parent="." instance=ExtResource("12_eb6dy")]
+visible = false
+top_level = true
+z_index = 2
 
 [node name="Static" type="Node2D" parent="."]
 position = Vector2(576, 324)
@@ -144,6 +157,28 @@ scale = Vector2(2.5, 2.5)
 [node name="KillableBlob2" parent="." instance=ExtResource("5_tbgi4")]
 position = Vector2(330, 552)
 scale = Vector2(2.5, 2.5)
+
+[node name="Rock" parent="." instance=ExtResource("6_tefeu")]
+position = Vector2(690, 173)
+
+[node name="Crate" parent="." instance=ExtResource("7_o6xl0")]
+position = Vector2(867, 292)
+
+[node name="Fan" parent="." instance=ExtResource("8_tipki")]
+position = Vector2(198, 528)
+
+[node name="Button" parent="." instance=ExtResource("9_85g3d")]
+position = Vector2(119, 528)
+node_path = NodePath("../Fan")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Trap" parent="." instance=ExtResource("10_choun")]
+position = Vector2(933, 527)
+scale = Vector2(3, 3)
+
+[node name="HUD" parent="." instance=ExtResource("11_ya4ey")]
+position = Vector2(17, 32)
 
 [connection signal="bonk" from="CharacterBody2D" to="." method="_on_character_body_2d_bonk"]
 [connection signal="kill" from="CharacterBody2D" to="." method="_on_character_body_2d_kill"]

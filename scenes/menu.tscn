@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dig5nmpr6foy5"]
+
+[ext_resource type="Script" uid="uid://b85tld3pkybql" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="FontFile" uid="uid://dab4fllssdffx" path="res://fonts/font.ttf" id="1_yqeox"]
+[ext_resource type="Theme" uid="uid://b7f2vfi1q28i4" path="res://scenes/theme.tres" id="2_con2f"]
+
+[sub_resource type="Theme" id="Theme_con2f"]
+default_font = ExtResource("1_yqeox")
+default_font_size = 30
+
+[node name="Menu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_vjb58")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_con2f")
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_con2f")
+text = "Resume"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_con2f")
+text = "Exit"
+
+[node name="Volume" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/Volume"]
+layout_mode = 2
+theme = SubResource("Theme_con2f")
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="exit"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/Volume/HSlider" to="." method="_volume_changed"]

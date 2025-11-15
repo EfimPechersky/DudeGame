@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl8tpj22odgfm"]
+[gd_scene load_steps=20 format=3 uid="uid://bl8tpj22odgfm"]
 
 [ext_resource type="Script" uid="uid://dhecgc3gekfdj" path="res://scripts/new_dude.gd" id="1_rhgci"]
-[ext_resource type="Texture2D" uid="uid://bbdlj652lp7ef" path="res://assets/dude/idle.png" id="1_v1x5w"]
-[ext_resource type="Texture2D" uid="uid://bew5uwvg7g1kl" path="res://assets/dude/run.png" id="3_m36vk"]
-[ext_resource type="Texture2D" uid="uid://diel1vsotcv0f" path="res://assets/dude/fall.png" id="4_opnw3"]
-[ext_resource type="Texture2D" uid="uid://csprvyduy5th4" path="res://assets/dude/jump.png" id="5_e15is"]
-[ext_resource type="Texture2D" uid="uid://cnrp8po1biuip" path="res://assets/dude/double_jump.png" id="6_2ssbm"]
-[ext_resource type="Texture2D" uid="uid://dd7g7spiq5sbg" path="res://assets/dude/wall_jump.png" id="7_rhgci"]
+[ext_resource type="Texture2D" uid="uid://bms0wxihi8f0v" path="res://assets/dude/idle.png" id="1_v1x5w"]
+[ext_resource type="Texture2D" uid="uid://cfok4o7qd8t0l" path="res://assets/dude/run.png" id="3_m36vk"]
+[ext_resource type="Texture2D" uid="uid://b4pmylxugfp6m" path="res://assets/dude/fall.png" id="4_opnw3"]
+[ext_resource type="Texture2D" uid="uid://celsp3labfye5" path="res://assets/dude/jump.png" id="5_e15is"]
+[ext_resource type="Texture2D" uid="uid://bjrfprvtd138k" path="res://assets/dude/double_jump.png" id="6_2ssbm"]
+[ext_resource type="Texture2D" uid="uid://cvsc5u0efdjya" path="res://assets/dude/wall_jump.png" id="7_rhgci"]
+[ext_resource type="AudioStream" uid="uid://bj7cwyl6n5ded" path="res://audio/step.ogg" id="8_og6vw"]
+[ext_resource type="AudioStream" uid="uid://cm3j3dh475paa" path="res://audio/jump.ogg" id="9_usnb6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uy56r"]
 radius = 20.0
@@ -353,3 +355,11 @@ shape = SubResource("CapsuleShape2D_uy56r")
 libraries = {
 &"": SubResource("AnimationLibrary_e15is")
 }
+
+[node name="StepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_og6vw")
+bus = &"SFX"
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_usnb6")
+bus = &"SFX"
